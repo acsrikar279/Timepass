@@ -15,17 +15,17 @@ for i in rolls:
         names.append(soup("td",{'colspan':'4'})[1].text)
         gpa.append(soup("td",{'colspan':'4'})[2].text)
         br.close()
-        names[index] = names[index].encode('ascii')
-        gpa[index] =gpa[index].encode('ascii')
+        gpa[index]= float(gpa[index].encode('ascii'))
         index+=1
 index=0
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-x, y = np.array(range(0,len(names))), gpa
-axes = plt.gca()
-axes.set_ylim([0,10])
-plt.xticks(x,names)
-plt.bar(x, y, width=0.5)
+print(names)
+print(gpa)
+x, y = np.array(range(0,len(rolls))), gpa
+plt.xticks(x,rolls)
+plt.bar(x,y)
+plt.ylim(0,10)
 plt.show()
